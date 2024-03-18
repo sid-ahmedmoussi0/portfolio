@@ -32,14 +32,14 @@ const timelineElements = [
     location: "Bucares, Évry-Courcouronnes ",
     mission: "Création de sites internet via un outil de gestion",
     secondMission: "Développement en JSON",
-    date: "06/2022 - 07/2023 (6 semaines)",
+    date: "06/2022 - 07/2022 (6 semaines)",
     icon: "work",
   },  {
     id: 5,
     title: "BTS Systèmes Numériques option Informatique et Réseaux",
     location: "Lycée Edmond Michelet, Arpajon",
     descritpion: "",
-    date: "2019 - 2022",
+    date: "2020 - 2022",
     icon: "school",
   },
 ];
