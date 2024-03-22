@@ -32,7 +32,7 @@ const timelineElements = [
     location: "Bucares, Évry-Courcouronnes ",
     mission: "Création de sites internet via un outil de gestion",
     secondMission: "Développement en JSON",
-    date: "06/2022 - 07/2022 (6 semaines)",
+    date: "31/05/2021 - 08/07/2021 (6 semaines)",
     icon: "work",
   },  {
     id: 5,
