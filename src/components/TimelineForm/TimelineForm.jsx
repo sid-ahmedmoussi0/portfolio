@@ -20,26 +20,28 @@ const TimelineForm = () => {
           let isWorkIcon = element.icon === "work";
 
           return (
-            
+
             <VerticalTimelineElement
-            key={element.id}
-            date={element.date}
-            dateClassName="text-white"
-            iconStyle={isWorkIcon ? workIconStyles : schoolIconStyles}
-            icon={isWorkIcon ? <WorkIcon /> : <SchoolIcon />}
-          >
-         
+              key={element.id}
+              date={element.date}
+              dateClassName="text-white"
+              iconStyle={isWorkIcon ? workIconStyles : schoolIconStyles}
+              icon={isWorkIcon ? <WorkIcon /> : <SchoolIcon />}
+            >
+
               <h3 className='text-xl font-bold'>
                 {element.title}
               </h3>
               <h5 className='text-lg italic '>
                 {element.location}
               </h5>
-              <ul className={`pl-4 ${isWorkIcon ? 'list-disc' : ''}`}>
-                <li className="my-6">{isWorkIcon ? element.mission : element.descritpion}</li>
-                {element.secondMission && <li className="my-6">{isWorkIcon ? element.secondMission : ''}</li>}
-                {element.thirdMission && <li className="my-6">{isWorkIcon ? element.thirdMission : ''}</li>}
-              </ul>
+              {element.mission || element.secondMission || element.thirdMission ? (
+                <ul className={`pl-4 ${isWorkIcon ? 'list-disc' : ''}`}>
+                  {element.mission && <li className="my-6">{isWorkIcon ? element.mission : ''}</li>}
+                  {element.secondMission && <li className="my-6">{isWorkIcon ? element.secondMission : ''}</li>}
+                  {element.thirdMission && <li className="my-6">{isWorkIcon ? element.thirdMission : ''}</li>}
+                </ul>
+              ) : null}
             </VerticalTimelineElement>
           )
         })
