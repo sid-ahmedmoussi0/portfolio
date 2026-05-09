@@ -1,87 +1,73 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LangageProgElements from '../../elements/SkillsElement/LangagesProgElements';
 import BddElements from '../../elements/SkillsElement/BddElements';
 import FrameworkElements from '../../elements/SkillsElement/FrameworkElements';
 import OutilsElements from '../../elements/SkillsElement/OutilsElements';
 import CmsElements from '../../elements/SkillsElement/CmsElements';
 
+const categories = [
+  { id: 'langages', label: 'Langages', elements: LangageProgElements },
+  { id: 'frameworks', label: 'Frameworks', elements: FrameworkElements },
+  { id: 'bdd', label: 'Bases de données', elements: BddElements },
+  { id: 'outils', label: 'Outils', elements: OutilsElements },
+  { id: 'cms', label: 'CMS', elements: CmsElements },
+];
+
 const Skills = () => {
+  const [active, setActive] = useState('langages');
+
+  const current = categories.find((c) => c.id === active);
+
   return (
-    <div name='skills' className=" w-full ">
-      <div className="max-w-screen-lg mx-auto p-4 flex flex-col justify-center w-full h-full text-white">
-        <h1 className='text-center text-4xl font-bold italic text-white mt-8 mb-10 shadow-lg  shadow-teal-500'>Compétences Informatiques</h1>
+    <section className="py-20 px-6 relative">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-violet-500/5 rounded-full blur-[100px] pointer-events-none" />
 
-        {/* Langage de Programmation */}
-        <div>
-          <p className="text-2xl font-bold border-b-4 border-gray-500 p-2 inline lg:text-4xl">Langages de programmation</p>
+      <div className="max-w-5xl mx-auto relative z-10">
+        <div className="text-center mb-12">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white">
+            Mes{' '}
+            <span className="bg-gradient-to-r from-teal-400 to-violet-500 bg-clip-text text-transparent">
+              compétences
+            </span>
+          </h2>
         </div>
-        <div className="w-full grid gap-8 text-center py-8 px-12 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:px-0">
-          {LangageProgElements.map((element) => (
-            <div key={element.id} className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${element.style} `}>
-              <img src={element.path} alt={element.title} className="mx-auto h-20" />
-              <p className="mt-0 flex flex-col items-center">{element.title}</p>
-            </div>
+
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => setActive(cat.id)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                active === cat.id
+                  ? 'bg-gradient-to-r from-teal-500 to-violet-600 text-white shadow-lg shadow-teal-500/20'
+                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              {cat.label}
+            </button>
           ))}
         </div>
 
-        {/* Bases de données */}
-        <div className="mt-7">
-          <p className="text-2xl font-bold border-b-4 border-gray-500 p-2 inline lg:text-4xl">Bases de données</p>
-        </div>
-        <div className="w-full grid gap-8 text-center py-8 px-12 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:px-0">
-          {BddElements.map((element) => (
-            <div key={element.id} className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${element.style}`}>
-              <img src={element.path} alt={element.title} className="mx-auto h-20" />
-              <p className="mt-2">{element.title}</p>
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          {current?.elements.map((element) => (
+            <div
+              key={element.id}
+              className="group bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col items-center gap-3 hover:border-white/25 hover:bg-white/8 transition-all duration-200 hover:-translate-y-1"
+            >
+              <img
+                src={element.path}
+                alt={element.title}
+                className={`h-12 w-12 object-contain group-hover:scale-110 transition-transform duration-200 ${element.imgClass || ''}`}
+              />
+              <span className="text-gray-300 text-sm font-medium text-center group-hover:text-white transition-colors">
+                {element.title}
+              </span>
             </div>
           ))}
         </div>
-
-        {/* Frameworks */}
-        <div className="mt-7">
-          <p className="text-2xl font-bold border-b-4 border-gray-500 p-2 inline lg:text-4xl">Frameworks</p>
-        </div>
-        <div className="w-full grid gap-8 text-center py-8 px-12 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:px-0">
-          {FrameworkElements.map((element) => (
-            <div key={element.id} className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${element.style}`}>
-              <img src={element.path} alt={element.title} className="mx-auto h-20" />
-              <p className="mt-2">{element.title}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* Outils */}
-        <div className="mt-7">
-          <p className="text-2xl font-bold border-b-4 border-gray-500 p-2 inline lg:text-4xl">Outils</p>
-        </div>
-        <div className="w-full grid gap-8 text-center py-8 px-12 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:px-0">
-          {OutilsElements.map((element) => (
-            <div key={element.id} className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${element.style}`}>
-              <img src={element.path} alt={element.title} className="mx-auto h-20" />
-              <p className="mt-2">{element.title}</p>
-            </div>
-          ))}
-        </div>
-
-        {/* CMS */}
-        <div className="mt-7">
-          <p className="text-2xl font-bold border-b-4 border-gray-500 p-2 inline lg:text-4xl">CMS</p>
-        </div>
-        <div className="w-full grid gap-8 text-center py-12 px-12 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 sm:px-0">
-          {CmsElements.map((element) => (
-            <div key={element.id} className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${element.style}`}>
-              <img src={element.path} alt={element.title} className="mx-auto h-20" />
-              <p className="mt-2">{element.title}</p>
-            </div>
-          ))}
-        </div>
-
       </div>
-    </div>
-
-
-
+    </section>
   );
-}
+};
 
 export default Skills;

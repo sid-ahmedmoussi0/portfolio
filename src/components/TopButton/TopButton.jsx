@@ -1,21 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { FiArrowUp } from 'react-icons/fi';
 
 const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-      // Adjust the scroll threshold as needed
-      setIsVisible(scrollTop > 100);
+      setIsVisible(window.scrollY > 300);
     };
-
     window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   const scrollToTop = () => {
@@ -25,21 +19,12 @@ const ScrollToTopButton = () => {
   return (
     <button
       onClick={scrollToTop}
-      className={`fixed bottom-6 right-3 bg-blue-gray-500 text-white p-3 rounded-full shadow-md hover:bg-blue-gray-600 focus:outline-none flex items-center transition-opacity md:bottom-0 ${
-        isVisible ? 'opacity-100' : 'opacity-0 pointer-events-none'
+      aria-label="Retour en haut"
+      className={`fixed bottom-6 right-6 z-40 w-10 h-10 rounded-xl bg-gradient-to-r from-teal-500 to-violet-600 text-white flex items-center justify-center shadow-lg shadow-teal-500/20 hover:opacity-90 transition-all duration-300 ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4 pointer-events-none'
       }`}
     >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        className="h-6 w-6 mr-1"
-      >
-        <path
-          d="M5 10l7-7m0 0l7 7m-7-7v18"
-        />
-      </svg>
+      <FiArrowUp className="text-sm" />
     </button>
   );
 };

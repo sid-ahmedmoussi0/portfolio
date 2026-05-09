@@ -1,112 +1,101 @@
 import React from 'react';
-import { Typography } from "@material-tailwind/react";
+import { Link } from 'react-router-dom';
+import { FiGithub, FiLinkedin, FiMail, FiPhone } from 'react-icons/fi';
 import ScrollToTopButton from '../TopButton/TopButton';
-import menuItems from '../../elements/FooterElements/FooterElements';
-import contactItems from '../../elements/FooterElements/ContactElements';
-import socialsItems from '../../elements/FooterElements/SocialElements';
 
 const currentYear = new Date().getFullYear();
 
 const Footer = () => {
-    return (
-        <footer className="bg-gray-800 text-center text-white  lg:text-left">
-            <ScrollToTopButton />
-            <div className="mx-6 py-10 text-center md:text-left">
-                <div className="grid-1 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
-                    <div className="">
-                        <h6 className="mb-4 flex items-center justify-center font-semibold uppercase md:justify-start">
-                            Sid-Ahmed Moussi
-                        </h6>
-                        <p>
-                            Développeur Full Stack passionné par l'informatique et plus particulièrement par le développement d'applications et de sites web.  
-                        </p>
-                    </div>
-                    {/* <!-- Lien Important --> */}
-                    <div className="">
-                        <h6 className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                            Liens Importants
-                        </h6>
-                        {menuItems.map((element) => (
-                            <p className="mb-4" key={element.id}>
-                                <Typography
-                                    as="a"
-                                    href={element.href}
-                                    color="blue-gray"
-                                    className="text-white">
-                                    {element.label}
-                                </Typography>
-                            </p>
-                        ))}
-                    </div>
-                    {/* <!-- Contact --> */}
-                    <div>
-                        <h6
-                            className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                            Contact
-                        </h6>
-                        {contactItems.map((element) => (
-                            <p className="mb-4 flex items-center justify-center md:justify-start" key={element.id}>
-                                <span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        className="mr-3 h-5 w-5"
-                                        dangerouslySetInnerHTML={{ __html: element.svg }}
-                                    />
-                                </span>
-                                <Typography
-                                    as="a"
-                                    href={element.href}
-                                    color="blue-gray"
-                                    className="text-white">
-                                    {element.label}
-                                </Typography>
-                            </p>
-                        ))}
-                    </div>
-                    {/* <!-- Réseaux Sociaux --> */}
-                    <div>
-                        <h6
-                            className="mb-4 flex justify-center font-semibold uppercase md:justify-start">
-                            Réseaux Sociaux
-                        </h6>
-                        {socialsItems.map((element) => (
-                            <p className="mb-4 flex items-center justify-center md:justify-start" key={element.id}>
-                                <span>
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        viewBox="0 0 24 24"
-                                        fill="currentColor"
-                                        className="mr-3 h-5 w-5"
-                                        dangerouslySetInnerHTML={{ __html: element.svg }}
-                                    />
-                                </span>
-                                <Typography
-                                    as="a"
-                                    href={element.href}
-                                    color="blue-gray"
-                                    className="text-white">
-                                    {element.label}
-                                </Typography>
-                            </p>
-                        ))}
-                    </div>
-                </div>
+  return (
+    <footer className="relative border-t border-white/10 bg-[#080b14]">
+      <ScrollToTopButton />
+
+      <div className="max-w-6xl mx-auto px-6 py-14">
+        <div className="grid md:grid-cols-3 gap-10">
+
+          <div>
+            <div className="mb-4">
+              <img src="/favicon.ico" alt="Logo" className="w-9 h-9 rounded-lg object-contain brightness-0 invert" />
             </div>
+            <p className="text-gray-500 text-sm leading-relaxed">
+              Développeur Full Stack 
+            </p>
+          </div>
 
+          <div>
+            <h6 className="text-white font-semibold text-sm mb-4">Navigation</h6>
+            <ul className="space-y-2">
+              {[
+                { label: 'Accueil', to: '/' },
+                { label: 'À propos', to: '/a-propos' },
+                { label: 'Mes projets', to: '/mes-projet' },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link
+                    to={item.to}
+                    className="text-gray-500 text-sm hover:text-teal-400 transition-colors duration-200"
+                  >
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-            <div className="bg-gray-800 p-6 text-center">
-                <Typography
-                    variant="small"
-                    className="font-semibold text-white"
+          <div>
+            <h6 className="text-white font-semibold text-sm mb-4">Contact</h6>
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="mailto:moussisidahmed0@gmail.com"
+                  className="flex items-center gap-2.5 text-gray-500 text-sm hover:text-teal-400 transition-colors"
                 >
-                    &copy; {currentYear} Sid-Ahmed Moussi
-                </Typography>
-            </div>
+                  <FiMail className="shrink-0" />
+                  moussisidahmed0@gmail.com
+                </a>
+              </li>
+              <li>
+                <span className="flex items-center gap-2.5 text-gray-500 text-sm">
+                  <FiPhone className="shrink-0" />
+                  06 21 74 63 55
+                </span>
+              </li>
+            </ul>
 
-        </footer>
-    );
-}
+            <div className="flex items-center gap-3 mt-6">
+              {[
+                {
+                  icon: <FiGithub />,
+                  href: 'https://github.com/Sid-Ahmed7',
+                  label: 'GitHub',
+                },
+                {
+                  icon: <FiLinkedin />,
+                  href: 'https://www.linkedin.com/in/sid-ahmed-moussi-722b61238/',
+                  label: 'LinkedIn',
+                },
+              ].map((social) => (
+                <a
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={social.label}
+                  className="w-9 h-9 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-teal-400 hover:border-teal-400/30 transition-all duration-200"
+                >
+                  {social.icon}
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-white/5 text-center text-gray-600 text-xs">
+          &copy; {currentYear} Sid-Ahmed Moussi. Tous droits réservés.
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;

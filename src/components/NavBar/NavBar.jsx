@@ -1,43 +1,92 @@
-import React, { useState } from 'react';
-import { FaBars } from 'react-icons/fa';
-
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NavBar = () => {
- 
-  const Links =[
-    {name:"Accueil",link:"/a-propos"},
-    {name:"Mes Projets",link:"/mes-projet"},
+  const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
+
+  const links = [
+    { name: 'Accueil', path: '/' },
+    { name: 'À propos', path: '/a-propos' },
+    { name: 'Projets', path: '/mes-projet' },
   ];
 
-  const [open,setOpen]=useState(false);
-return (
-  <div className='shadow-md w-full absolute top-0 left-0 z-20'>
-    <div className='md:flex items-center justify-between bg-gray-800 py-4 md:px-10 px-7'>
-    <div className='font-bold text-2xl cursor-pointer flex items-center font-[Poppins] 
-    text-white'>
-      <span className='text-3xl mr-1 pt-2'>
-      </span>
-      Portfolio
-    </div>
-    
-    <div onClick={()=>setOpen(!open)} className='text-3xl absolute right-7 top-5 cursor-pointer md:hidden'>
-    <FaBars name={open ? 'close':'menu'}></FaBars>
-    </div>
+  return (
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled || open
+          ? 'bg-[#080b14]/95 backdrop-blur-md shadow-lg shadow-black/30'
+          : 'bg-transparent'
+      }`}
+    >
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Link to="/">
+          <img src="/favicon.ico" alt="Logo" className="w-9 h-9 rounded-lg object-contain brightness-0 invert" />
+        </Link>
 
-    <ul className={`absolute z-[-1] left-0 w-full pl-9 transition-all duration-500 ease-in ${open ? 'top-19 ' : 'top-[-490px]'} backdrop-filter backdrop-blur-sm opacity-${open ? '60' : '100'} lg:pb-0 md:flex md:items-center md:pb-0 md:static md:z-auto md:w-auto md:pl-0 sm:pb-10`}>
-      {
-        Links.map((link)=>(
-          <li key={link.name} className='text-xl md:ml-8 md:my-0 my-7'>
-            <a href={link.link} className='text-white hover:underline duration-500'>{link.name}</a>
-          </li>
-        ))
-      }
-    
-    </ul>
-    </div>
-  </div>
-)
-}
+        <ul className="hidden md:flex items-center gap-8">
+          {links.map((link) => (
+            <li key={link.name}>
+              <Link
+                to={link.path}
+                className={`relative text-sm font-medium transition-colors duration-200 pb-1 ${
+                  location.pathname === link.path
+                    ? 'text-teal-400'
+                    : 'text-gray-400 hover:text-white'
+                }`}
+              >
+                {link.name}
+                {location.pathname === link.path && (
+                  <span className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-teal-400 to-violet-500" />
+                )}
+              </Link>
+            </li>
+          ))}
+        </ul>
 
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden text-gray-300 hover:text-white text-xl transition-colors"
+        >
+          {open ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      <div
+        className={`md:hidden overflow-hidden transition-all duration-300 ${
+          open ? 'max-h-64' : 'max-h-0'
+        }`}
+      >
+        <div className="border-t border-white/10 px-6 py-4 flex flex-col gap-1">
+          {links.map((link) => (
+            <Link
+              key={link.name}
+              to={link.path}
+              className={`block py-3 px-4 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                location.pathname === link.path
+                  ? 'text-teal-400 bg-teal-400/10'
+                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+              }`}
+            >
+              {link.name}
+            </Link>
+          ))}
+        </div>
+      </div>
+    </nav>
+  );
+};
 
 export default NavBar;

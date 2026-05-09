@@ -7,6 +7,12 @@ import geii from "../../assets/Projets/geii.jpg";
 import boutique from "../../assets/Projets/boutique.png";
 import compression from "../../assets/Projets/compression.jpg";
 import annuaire from "../../assets/Projets/annuaire.jpg";
+import backlog from "../../assets/Projets/backlog.png";
+import vintage from "../../assets/Projets/vintage.jpg";
+import fake from "../../assets/Projets/fake.jpg";
+import bank from "../../assets/Projets/bank.webp";
+import esport from "../../assets/Projets/esport.jpg";
+import training from "../../assets/Projets/training.png";
 const ProjectsElements = [
   {
     id: 1,
@@ -33,7 +39,7 @@ const ProjectsElements = [
     hauteur: "h-60",
     language: "Dart",
     equipe: "3",
-    lien: "https://github.com/AbdourahmaneGadio/SmashBurger",
+    lien: "https://github.com/Sid-Ahmed7/SmashBurger",
   },
   {
     id: 4,
@@ -42,7 +48,7 @@ const ProjectsElements = [
     hauteur: "h-60",
     language: "HTML, CSS, PHP, JS, Bootstrap",
     equipe: "3",
-    lien: "https://github.com/managlue/geii",
+    lien: "#",
   },
   {
     id: 5,
@@ -58,7 +64,7 @@ const ProjectsElements = [
     title: "Boutique en ligne (en cours de réalisation)",
     src: boutique,
     hauteur: "h-60",
-    language: "Java, React JS, Redux, Axios",
+    language: "Spring, React JS, Redux, Axios",
     equipe: "1",
     lien: "https://github.com/Sid-Ahmed7/Application_de_paiement",
   },
@@ -86,6 +92,60 @@ const ProjectsElements = [
     language: "Shell",
     equipe: "1",
   },
+  {
+    id: 10,
+    title: "Backlog de jeux vidéo",
+    src: backlog,
+    hauteur: "h-60",
+    language: "Nuxt",
+    equipe: "1",
+    lien: "https://github.com/Sid-Ahmed7/nuxt-backlog-jeux",
+  },
+  {
+    id: 11,
+    title: "API TrainUp",
+    src: training,
+    hauteur: "h-60",
+    language: "Node.js, Express, TypeScript",
+    equipe: "3",
+    lien: "https://github.com/Sid-Ahmed7/TrainUp",
+  },
+  {
+    id: 12,
+    title: "Location de voitures vintage",
+    src: vintage,
+    hauteur: "h-60",
+    language: "Symfony",
+    equipe: "3",
+    lien: "https://github.com/Sofianedevv/Retro-car-rent",
+  },
+  {
+    id: 13,
+    title: "Simulation de fausses discussions sur les messageries",
+    src: fake,
+    hauteur: "h-60",
+    language: "Symfony, Vue.js",
+    equipe: "3",
+    lien: "https://github.com/Sofianedevv/TalkLabs",
+  },
+  {
+    id: 14,
+    title: "BanqueAvenir",
+    src: bank,
+    hauteur: "h-60",
+    language: "TypeScript, Express, AdonisJS, Nuxt.js, WebSocket",
+    equipe: "3",
+    lien: "https://github.com/Sid-Ahmed7/Clean-Architecture-Avenir",
+  },
+  {
+    id: 15,
+    title: "Esport Tournament API",
+    src: esport,
+    hauteur: "h-60",
+    language: "NestJS",
+    equipe: "3",
+    lien: "https://github.com/Sid-Ahmed7/Projet_nest",
+  }
 ];
 
 export default ProjectsElements;

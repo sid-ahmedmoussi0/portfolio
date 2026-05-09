@@ -1,55 +1,93 @@
 import React from 'react';
-import { ReactComponent as WorkIcon } from "../../assets/svg/work.svg";
-import { ReactComponent as SchoolIcon } from "../../assets/svg/school.svg";
-import timelineElements from "../../elements/TimelineElements/timelineElements";
-import { VerticalTimeline, VerticalTimelineElement } from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-import '../../index.css';
-
+import timelineElements from '../../elements/TimelineElements/timelineElements';
+import { FiBriefcase, FiBook } from 'react-icons/fi';
 
 const TimelineForm = () => {
-  let workIconStyles = { background: "#06D6A0" };
-  let schoolIconStyles = { background: "#f9c74f" };
-
   return (
+    <section className="py-20 px-6 relative">
+      <div className="max-w-4xl mx-auto">
+        <div className="text-center mb-16">
+          <p className="text-teal-400 text-xs font-medium tracking-widest uppercase mb-3">
+            Expériences & Formations
+          </p>
+          <h2 className="text-3xl lg:text-4xl font-bold text-white">
+            Mon{' '}
+            <span className="bg-gradient-to-r from-teal-400 to-violet-500 bg-clip-text text-transparent">
+              parcours
+            </span>
+          </h2>
+        </div>
 
-    <div className='font-montserrat text-base text-gray-700 justify-center max-w-screen-lg mx-auto p-8 flex flex-col w-full h-full'>
-      <h1 className='text-center text-5xl font-bold italic text-white bh mt-16 mb-14 shadow-lg shadow-teal-500'>Mon parcours</h1>
-      <VerticalTimeline>
-        {timelineElements.map((element) => {
-          let isWorkIcon = element.icon === "work";
+        <div className="relative">
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal-400/50 via-violet-500/30 to-transparent md:-translate-x-1/2" />
 
-          return (
+          <div className="flex flex-col gap-10">
+            {timelineElements.map((element, index) => {
+              const isWork = element.icon === 'work';
+              const isLeft = index % 2 === 0;
 
-            <VerticalTimelineElement
-              key={element.id}
-              date={element.date}
-              dateClassName="text-white"
-              iconStyle={isWorkIcon ? workIconStyles : schoolIconStyles}
-              icon={isWorkIcon ? <WorkIcon /> : <SchoolIcon />}
-            >
+              return (
+                <div
+                  key={element.id}
+                  className={`relative flex items-start gap-6 md:gap-0 ${
+                    isLeft ? 'md:flex-row' : 'md:flex-row-reverse'
+                  }`}
+                >
+                  <div
+                    className={`ml-16 md:ml-0 md:w-[calc(50%-2.5rem)] bg-white/5 border border-white/10 rounded-xl p-5 hover:border-white/20 transition-colors duration-200 ${
+                      isLeft ? 'md:mr-10' : 'md:ml-10'
+                    }`}
+                  >
+                    <span
+                      className={`inline-block text-xs font-medium px-2.5 py-1 rounded-full mb-3 ${
+                        isWork
+                          ? 'bg-teal-400/10 text-teal-400 border border-teal-400/20'
+                          : 'bg-violet-400/10 text-violet-400 border border-violet-400/20'
+                      }`}
+                    >
+                      {element.date}
+                    </span>
 
-              <h3 className='text-xl font-bold'>
-                {element.title}
-              </h3>
-              <h5 className='text-lg italic '>
-                {element.location}
-              </h5>
-              {element.mission || element.secondMission || element.thirdMission ? (
-                <ul className={`pl-4 ${isWorkIcon ? 'list-disc' : ''}`}>
-                  {element.mission && <li className="my-6">{isWorkIcon ? element.mission : ''}</li>}
-                  {element.secondMission && <li className="my-6">{isWorkIcon ? element.secondMission : ''}</li>}
-                  {element.thirdMission && <li className="my-6">{isWorkIcon ? element.thirdMission : ''}</li>}
-                </ul>
-              ) : null}
-            </VerticalTimelineElement>
-          )
-        })
-        }
-      </VerticalTimeline>
-    </div>
+                    <h3 className="text-white font-semibold text-sm lg:text-base leading-snug mb-1">
+                      {element.title}
+                    </h3>
+                    <p className="text-gray-500 text-xs mb-3">{element.location}</p>
 
-  )
-}
+                    {isWork && (
+                      <ul className="space-y-1.5">
+                        {[element.mission, element.secondMission, element.thirdMission, element.fourthMission]
+                          .filter(Boolean)
+                          .map((mission, i) => (
+                            <li key={i} className="flex items-start gap-2 text-gray-400 text-xs">
+                              <span className="mt-1.5 w-1 h-1 rounded-full bg-teal-400 shrink-0" />
+                              {mission}
+                            </li>
+                          ))}
+                      </ul>
+                    )}
+
+                    {!isWork && element.descritpion && (
+                      <p className="text-gray-400 text-xs">{element.descritpion}</p>
+                    )}
+                  </div>
+
+                  <div
+                    className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border ${
+                      isWork
+                        ? 'bg-teal-500/10 border-teal-400/30 text-teal-400'
+                        : 'bg-violet-500/10 border-violet-400/30 text-violet-400'
+                    }`}
+                  >
+                    {isWork ? <FiBriefcase className="text-lg" /> : <FiBook className="text-lg" />}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
 
 export default TimelineForm;
