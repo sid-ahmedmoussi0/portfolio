@@ -2,7 +2,7 @@ import React from 'react';
 import IMG from '../../assets/Profil/Profil.jpg';
 import Typewriter from 'typewriter-effect';
 import CVButton from '../CVButton/CVButton';
-import { FiMail, FiMapPin } from 'react-icons/fi';
+import { FiMapPin } from 'react-icons/fi';
 
 const HeaderAbout = () => {
   return (
