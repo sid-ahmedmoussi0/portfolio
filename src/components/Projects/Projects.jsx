@@ -6,7 +6,7 @@ const Projects = () => {
   const [, setHovered] = useState(null);
 
   return (
-    <section className="py-28 px-6 relative">
+    <section className="py-28 px-6 relative overflow-hidden">
       <div className="absolute top-20 -left-32 w-96 h-96 bg-teal-500/8 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-20 -right-32 w-96 h-96 bg-violet-500/8 rounded-full blur-[100px] pointer-events-none" />
 
