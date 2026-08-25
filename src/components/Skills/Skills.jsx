@@ -1,22 +1,11 @@
 import React, { useState } from 'react';
-import LangageProgElements from '../../elements/SkillsElement/LangagesProgElements';
-import BddElements from '../../elements/SkillsElement/BddElements';
-import FrameworkElements from '../../elements/SkillsElement/FrameworkElements';
-import OutilsElements from '../../elements/SkillsElement/OutilsElements';
-import CmsElements from '../../elements/SkillsElement/CmsElements';
+import { ALL_SKILLS } from '../../constants/skills';
 
-const categories = [
-  { id: 'langages', label: 'Langages', elements: LangageProgElements },
-  { id: 'frameworks', label: 'Frameworks', elements: FrameworkElements },
-  { id: 'bdd', label: 'Bases de données', elements: BddElements },
-  { id: 'outils', label: 'Outils', elements: OutilsElements },
-  { id: 'cms', label: 'CMS', elements: CmsElements },
-];
 
 const Skills = () => {
   const [active, setActive] = useState('langages');
 
-  const current = categories.find((c) => c.id === active);
+  const current = ALL_SKILLS.find((c) => c.id === active);
 
   return (
     <section className="py-20 px-6 relative">
@@ -26,14 +15,14 @@ const Skills = () => {
         <div className="text-center mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-white">
             Mes{' '}
-            <span className="bg-gradient-to-r from-teal-400 to-violet-500 bg-clip-text text-transparent">
+            <span className="text-white">
               compétences
             </span>
           </h2>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {categories.map((cat) => (
+          {ALL_SKILLS.map((cat) => (
             <button
               key={cat.id}
               onClick={() => setActive(cat.id)}

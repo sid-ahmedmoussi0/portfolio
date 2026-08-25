@@ -1,6 +1,7 @@
 import React from 'react';
 import IMG from '../../assets/Profil/Profil.jpg';
 import Typewriter from 'typewriter-effect';
+import { TYPE_WRITER_STRINGS } from '../../constants/home';
 import CVButton from '../CVButton/CVButton';
 import { FiMapPin } from 'react-icons/fi';
 
@@ -20,7 +21,7 @@ const HeaderAbout = () => {
 
             <h1 className="text-4xl lg:text-5xl font-extrabold text-white mb-3 leading-tight tracking-tight">
               Sid-Ahmed{' '}
-              <span className="bg-gradient-to-r from-teal-400 to-violet-500 bg-clip-text text-transparent">
+              <span className="text-white">
                 Moussi
               </span>
             </h1>
@@ -28,7 +29,7 @@ const HeaderAbout = () => {
             <div className="text-lg text-teal-400 font-medium mb-6 h-8">
               <Typewriter
                 options={{
-                  strings: ['Développeur Full Stack'],
+                  strings: TYPE_WRITER_STRINGS,
                   autoStart: true,
                   loop: true,
                   deleteSpeed: 50,

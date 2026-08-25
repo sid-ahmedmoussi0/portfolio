@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import { NAV_LINKS } from './../../constants/navbar';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
@@ -17,11 +18,6 @@ const NavBar = () => {
     setOpen(false);
   }, [location]);
 
-  const links = [
-    { name: 'Accueil', path: '/' },
-    { name: 'À propos', path: '/a-propos' },
-    { name: 'Projets', path: '/mes-projet' },
-  ];
 
   return (
     <nav
@@ -33,12 +29,12 @@ const NavBar = () => {
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link to="/">
-          <img src="/favicon.ico" alt="Logo" className="w-9 h-9 rounded-lg object-contain brightness-0 invert" />
+          <img src="/logo.svg" alt="Logo" width="44" height="44" />
         </Link>
 
         <ul className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <li key={link.name}>
+          {NAV_LINKS.map((link) => (
+            <li key={link.label}>
               <Link
                 to={link.path}
                 className={`relative text-sm font-medium transition-colors duration-200 pb-1 ${
@@ -47,7 +43,7 @@ const NavBar = () => {
                     : 'text-gray-400 hover:text-white'
                 }`}
               >
-                {link.name}
+                {link.label}
                 {location.pathname === link.path && (
                   <span className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-teal-400 to-violet-500" />
                 )}
@@ -70,9 +66,9 @@ const NavBar = () => {
         }`}
       >
         <div className="border-t border-white/10 px-6 py-4 flex flex-col gap-1">
-          {links.map((link) => (
+          {NAV_LINKS.map((link) => (
             <Link
-              key={link.name}
+              key={link.label}
               to={link.path}
               className={`block py-3 px-4 rounded-lg text-sm font-medium transition-colors duration-200 ${
                 location.pathname === link.path
@@ -80,7 +76,7 @@ const NavBar = () => {
                   : 'text-gray-400 hover:text-white hover:bg-white/5'
               }`}
             >
-              {link.name}
+              {link.label}
             </Link>
           ))}
         </div>

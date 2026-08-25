@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { NAV_LINKS } from '../../constants/navbar';
 import { FiGithub, FiLinkedin, FiMail, FiPhone } from 'react-icons/fi';
 import ScrollToTopButton from '../TopButton/TopButton';
 
@@ -15,7 +16,7 @@ const Footer = () => {
 
           <div>
             <div className="mb-4">
-              <img src="/favicon.ico" alt="Logo" className="w-9 h-9 rounded-lg object-contain brightness-0 invert" />
+              <img src="/logo.svg" alt="Logo" width="44" height="44" />
             </div>
             <p className="text-gray-500 text-sm leading-relaxed">
               Développeur Full Stack 
@@ -26,9 +27,7 @@ const Footer = () => {
             <h6 className="text-white font-semibold text-sm mb-4">Navigation</h6>
             <ul className="space-y-2">
               {[
-                { label: 'Accueil', to: '/' },
-                { label: 'À propos', to: '/a-propos' },
-                { label: 'Mes projets', to: '/mes-projet' },
+                ...NAV_LINKS,
               ].map((item) => (
                 <li key={item.label}>
                   <Link

@@ -1,8 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
-import { Link } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import NavBar from '../../components/NavBar/NavBar';
+import Button from '../../components/Button/Button';
+import { TYPE_WRITER_STRINGS } from '../../constants/home';
 
 function Home() {
   return (
@@ -36,7 +37,7 @@ function Home() {
 
         <h1 className="text-5xl lg:text-7xl font-extrabold text-white mb-4 leading-tight tracking-tight">
           Sid-Ahmed{' '}
-          <span className="bg-gradient-to-r from-teal-400 to-violet-500 bg-clip-text text-transparent">
+          <span className="text-white">
             Moussi
           </span>
         </h1>
@@ -44,9 +45,7 @@ function Home() {
         <div className="text-xl lg:text-2xl text-gray-400 font-medium mb-6 h-9">
           <Typewriter
             options={{
-              strings: [
-                'Développeur Full Stack',
-              ],
+              strings: TYPE_WRITER_STRINGS,
               autoStart: true,
               loop: true,
               deleteSpeed: 40,
@@ -59,16 +58,8 @@ function Home() {
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4">
-          <Link to="/a-propos">
-            <button className="px-8 py-3 bg-gradient-to-r from-teal-500 to-violet-600 text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200 shadow-lg shadow-teal-500/20">
-              En savoir plus
-            </button>
-          </Link>
-          <Link to="/mes-projet">
-            <button className="px-8 py-3 border border-white/15 text-white text-sm font-semibold rounded-lg hover:bg-white/5 transition-colors duration-200">
-              Voir mes projets
-            </button>
-          </Link>
+          <Button to="/a-propos">En savoir plus</Button>
+          <Button to="/mes-projet" variant="outline">Voir mes projets</Button>
         </div>
 
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 opacity-40">

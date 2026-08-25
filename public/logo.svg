@@ -1,0 +1,12 @@
+<svg width="44" height="44" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="octBorder" x1="0" y1="0" x2="100" y2="100" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#2dd4bf" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+  </defs>
+  <polygon points="28,2 72,2 98,28 98,72 72,98 28,98 2,72 2,28" fill="#0d1117" />
+  <polygon points="28,2 72,2 98,28 98,72 72,98 28,98 2,72 2,28" stroke="url(#octBorder)" stroke-width="3" fill="none" />
+  <path d="M 46,23 L 15,23 L 15,50 L 46,50 L 46,77 L 15,77" stroke="#2dd4bf" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter" />
+  <path d="M 54,77 L 54,23 L 71,53 L 88,23 L 88,77" stroke="white" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter" />
+</svg>

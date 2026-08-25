@@ -3,10 +3,10 @@ import ProjectsElements from '../../elements/ProjectsElements/ProjectsElements';
 import { FiGithub, FiUsers, FiExternalLink } from 'react-icons/fi';
 
 const Projects = () => {
-  const [, setHovered] = useState(null);
+  const [hovered, setHovered] = useState(null);
 
   return (
-    <section className="py-28 px-6 relative overflow-hidden">
+    <section className="py-28 px-6 relative">
       <div className="absolute top-20 -left-32 w-96 h-96 bg-teal-500/8 rounded-full blur-[100px] pointer-events-none" />
       <div className="absolute bottom-20 -right-32 w-96 h-96 bg-violet-500/8 rounded-full blur-[100px] pointer-events-none" />
 
@@ -17,7 +17,7 @@ const Projects = () => {
           </p>
           <h2 className="text-3xl lg:text-4xl font-bold text-white">
             Mes{' '}
-            <span className="bg-gradient-to-r from-teal-400 to-violet-500 bg-clip-text text-transparent">
+            <span className="text-white">
               projets
             </span>
           </h2>
