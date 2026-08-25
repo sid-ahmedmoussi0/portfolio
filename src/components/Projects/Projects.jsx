@@ -3,7 +3,7 @@ import ProjectsElements from '../../elements/ProjectsElements/ProjectsElements';
 import { FiGithub, FiUsers, FiExternalLink } from 'react-icons/fi';
 
 const Projects = () => {
-  const [hovered, setHovered] = useState(null);
+  const [, setHovered] = useState(null);
 
   return (
     <section className="py-28 px-6 relative">
