@@ -13,6 +13,7 @@
     font-family: 'Inter', sans-serif;
     background-color: #080b14;
     color: #f9fafb;
+    overflow-x: hidden;
   }
 
   ::selection {
