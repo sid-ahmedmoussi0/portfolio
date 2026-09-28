@@ -13,6 +13,9 @@ import fake from "../../assets/Projets/fake.jpg";
 import bank from "../../assets/Projets/bank.webp";
 import esport from "../../assets/Projets/esport.jpg";
 import training from "../../assets/Projets/training.png";
+import skaldly from "../../assets/Projets/skaldly.jpg";
+import budget from "../../assets/Projets/budget.jpg";
+import simulation from "../../assets/Projets/simulation.jpg";
 const ProjectsElements = [
   {
     id: 1,
@@ -145,7 +148,36 @@ const ProjectsElements = [
     language: "NestJS",
     equipe: "3",
     lien: "https://github.com/Sid-Ahmed7/Projet_nest",
-  }
+  },
+  {
+    id: 16,
+    title: "Skaldly – Plateforme d'apprentissage des langues",
+    src: skaldly,
+    hauteur: "h-60",
+    language: "Spring Boot, React, TypeScript, PostgreSQL, WebSocket, Docker Swarm",
+    equipe: "",
+    lien: "https://skaldly.fr",
+  },
+    {
+    id: 17,
+    title: "Gestionnaire de dépenses partagées assisté par l'IA",
+    src: budget,
+    hauteur: "h-60",
+    language: "Spring Boot, React, TypeScript, PostgreSQL",
+    equipe: "1",
+    lien: "#",
+  },
+
+    {
+    id: 18,
+    title: "IA d'analyse de decks  & simulation de combos (en cours de réalisation)",
+    src: simulation,
+    hauteur: "h-60",
+    language: "Python",
+    equipe: "1",
+    lien: "#",
+  },
 ];
+
 
 export default ProjectsElements;
