@@ -31,7 +31,7 @@ const Footer = () => {
               ].map((item) => (
                 <li key={item.label}>
                   <Link
-                    to={item.to}
+                    to={item.path}
                     className="text-gray-500 text-sm hover:text-teal-400 transition-colors duration-200"
                   >
                     {item.label}

@@ -69,9 +69,9 @@ const Projects = () => {
                       rel="noreferrer"
                       className="inline-flex items-center gap-2 text-xs font-medium text-teal-400 hover:text-teal-300 transition-colors"
                     >
-                      <FiGithub />
-                      Voir le code
-                      <FiExternalLink className="text-[10px]" />
+                      {element.lien.includes('github.com') ? <FiGithub /> : <FiExternalLink />}
+                      {element.lien.includes('github.com') ? 'Voir le code' : 'Voir le site'}
+                      {element.lien.includes('github.com') && <FiExternalLink className="text-[10px]" />}
                     </a>
                   </div>
                 )}
