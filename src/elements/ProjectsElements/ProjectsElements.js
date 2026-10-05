@@ -16,6 +16,7 @@ import training from "../../assets/Projets/training.png";
 import skaldly from "../../assets/Projets/skaldly.jpg";
 import budget from "../../assets/Projets/budget.jpg";
 import simulation from "../../assets/Projets/simulation.jpg";
+import miniSentry from "../../assets/Projets/miniSentry.jpg";
 const ProjectsElements = [
   {
     id: 1,
@@ -167,9 +168,18 @@ const ProjectsElements = [
     equipe: "1",
     lien: "#",
   },
+  {
+    id: 18,
+    title: "Réalisation d'un mini Sentry: outil de suivi des erreurs",
+    src: miniSentry,
+    hauteur: "h-60",
+    language: "Spring Boot, React, TypeScript, PostgreSQL",
+    equipe: "1",
+    lien: "#"
+  },
 
     {
-    id: 18,
+    id: 19,
     title: "IA d'analyse de decks  & simulation de combos (en cours de réalisation)",
     src: simulation,
     hauteur: "h-60",
