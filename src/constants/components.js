@@ -8,3 +8,13 @@ export const SIZES_BUTTON = {
   sm: 'px-4 py-2 text-sm font-medium',
   md: 'px-8 py-3 text-sm font-semibold',
 };
+
+export const FILTERS = [
+  { label: 'Tous', match: null },
+  { label: 'Spring', match: 'Spring' },
+  { label: 'React', match: 'React' },
+  { label: 'Node.js', match: 'Node' },
+  { label: 'PHP / Symfony', match: ['PHP', 'Symfony'] },
+  { label: 'Python', match: 'Python' },
+  { label: 'TypeScript', match: 'TypeScript' },
+];

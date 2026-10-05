@@ -1,9 +1,22 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ProjectsElements from '../../elements/ProjectsElements/ProjectsElements';
 import { FiGithub, FiUsers, FiExternalLink } from 'react-icons/fi';
+import { FILTERS } from '../../constants/components';
+
+
+const matchesFilter = (language, match) => {
+  if (!match) return true;
+  const targets = Array.isArray(match) ? match : [match];
+  return targets.some((t) => language.includes(t));
+};
 
 const Projects = () => {
-  const [, setHovered] = useState(null);
+  const [active, setActive] = useState('Tous');
+
+  const filtered = ProjectsElements.filter((el) => {
+    const filter = FILTERS.find((f) => f.label === active);
+    return matchesFilter(el.language, filter.match);
+  });
 
   return (
     <section className="py-28 px-6 relative">
@@ -23,12 +36,26 @@ const Projects = () => {
           </h2>
         </div>
 
+        <div className="flex flex-wrap justify-center gap-2 mb-10">
+          {FILTERS.map((f) => (
+            <button
+              key={f.label}
+              onClick={() => setActive(f.label)}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                active === f.label
+                  ? 'bg-gradient-to-r from-teal-500 to-violet-600 text-white shadow-lg shadow-teal-500/20'
+                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {ProjectsElements.map((element) => (
+          {filtered.map((element) => (
             <div
               key={element.id}
-              onMouseEnter={() => setHovered(element.id)}
-              onMouseLeave={() => setHovered(null)}
               className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col"
             >
               <div className="relative overflow-hidden h-44">

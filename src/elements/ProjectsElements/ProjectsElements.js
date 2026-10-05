@@ -32,7 +32,7 @@ const ProjectsElements = [
     title: "Vérification de mots innapropriés dans un article",
     src: check,
     hauteur: "h-60",
-    language: "Java, React JS, Redux, Axios",
+    language: "Spring Boot, React JS, Redux, Axios",
     equipe: "1",
     lien: "#",
   },
