@@ -164,7 +164,7 @@ const ProjectsElements = [
     title: "Gestionnaire de dépenses partagées assisté par l'IA",
     src: budget,
     hauteur: "h-60",
-    language: "Spring Boot, React, TypeScript, PostgreSQL",
+    language: "Spring Boot, Spring Security, React, TypeScript, PostgreSQL, Mistral AI",
     equipe: "1",
     lien: "#",
   },
@@ -173,7 +173,7 @@ const ProjectsElements = [
     title: "Réalisation d'un mini Sentry: outil de suivi des erreurs",
     src: miniSentry,
     hauteur: "h-60",
-    language: "Spring Boot, React, TypeScript, PostgreSQL",
+    language: "Spring Boot, React, TypeScript, PostgreSQL, RabbitMQ, Docker",
     equipe: "1",
     lien: "#"
   },
