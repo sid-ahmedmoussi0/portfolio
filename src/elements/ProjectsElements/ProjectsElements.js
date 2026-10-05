@@ -68,7 +68,7 @@ const ProjectsElements = [
     title: "Boutique en ligne (en cours de réalisation)",
     src: boutique,
     hauteur: "h-60",
-    language: "Spring, React JS, Redux, Axios",
+    language: "Spring Boot, React JS, Redux, Axios",
     equipe: "1",
     lien: "https://github.com/Sid-Ahmed7/Application_de_paiement",
   },
