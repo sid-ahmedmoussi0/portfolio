@@ -74,8 +74,8 @@ const TimelineForm = () => {
                   <div
                     className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border z-10 ${
                       isWork
-                        ? 'bg-teal-500/10 border-teal-400/30 text-teal-400'
-                        : 'bg-violet-500/10 border-violet-400/30 text-violet-400'
+                        ? 'bg-[#080b14] border-teal-400/30 text-teal-400 shadow-[inset_0_0_0_100px_rgba(20,184,166,0.1)]'
+                        : 'bg-[#080b14] border-violet-400/30 text-violet-400 shadow-[inset_0_0_0_100px_rgba(139,92,246,0.1)]'
                     }`}
                   >
                     {isWork ? <FiBriefcase className="text-lg" /> : <FiBook className="text-lg" />}
