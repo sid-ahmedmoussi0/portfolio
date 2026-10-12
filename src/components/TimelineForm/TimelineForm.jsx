@@ -19,7 +19,7 @@ const TimelineForm = () => {
         </div>
 
         <div className="relative">
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal-400/50 via-violet-500/30 to-transparent md:-translate-x-1/2" />
+          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-teal-400/50 via-violet-500/30 to-transparent md:-translate-x-1/2 z-0" />
 
           <div className="flex flex-col gap-10">
             {timelineElements.map((element, index) => {
@@ -72,7 +72,7 @@ const TimelineForm = () => {
                   </div>
 
                   <div
-                    className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border ${
+                    className={`absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-xl flex items-center justify-center shrink-0 border z-10 ${
                       isWork
                         ? 'bg-teal-500/10 border-teal-400/30 text-teal-400'
                         : 'bg-violet-500/10 border-violet-400/30 text-violet-400'
