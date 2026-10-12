@@ -65,7 +65,7 @@ const ProjectsElements = [
   },
   {
     id: 6,
-    title: "Boutique en ligne (en cours de réalisation)",
+    title: "Boutique en ligne",
     src: boutique,
     hauteur: "h-60",
     language: "Spring Boot, React JS, Redux, Axios",
@@ -170,7 +170,7 @@ const ProjectsElements = [
   },
   {
     id: 18,
-    title: "Réalisation d'un mini Sentry: outil de suivi des erreurs",
+    title: "Réalisation d'un mini Sentry: outil de suivi des erreurs (en cours de réalisation)",
     src: miniSentry,
     hauteur: "h-60",
     language: "Spring Boot, React, TypeScript, PostgreSQL, RabbitMQ, Docker",
