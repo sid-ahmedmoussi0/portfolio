@@ -24,7 +24,7 @@ const timelineElements = [
     location: "Wild Code School",
     mission: "Formation intensive en développement Java et Angular",
     date: "15/04/2024 - 12/07/2024",
-    icon: "work",
+    icon: "school",
   },
   {
     id: 4,
