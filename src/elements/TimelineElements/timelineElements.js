@@ -6,7 +6,7 @@ const timelineElements = [
     mission: "Conception et développement de nouvelles fonctionnalités, correction des anomalies au sein d'une solution bancaire basée sur Spring et React JS",
     secondMission: "Mise en place et réalisation de tests de charge avec Locust (Python)",
     thirdMission: "Proof of Concept : rendu dynamique de composants React à partir d'un schéma JSON généré par GrapesJS",
-    fourthMission: "Implémentation front-end de la fonctionnalité VOP (Verification of Payee)",
+    fourthMission: "Implémentation de la réglementation VOP (Verification of Payee)",
     date: "09/2024 - 09/2026",
     icon: "work",
   },
