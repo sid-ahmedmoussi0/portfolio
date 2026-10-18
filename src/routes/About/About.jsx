@@ -1,4 +1,3 @@
-import React from 'react';
 import { Helmet } from 'react-helmet';
 import NavBar from '../../components/NavBar/NavBar.jsx';
 import HeaderAbout from '../../components/HeaderAbout/HeaderAbout.jsx';

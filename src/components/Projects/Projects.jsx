@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import ProjectsElements from '../../elements/ProjectsElements/ProjectsElements';
-import { FiGithub, FiUsers, FiExternalLink } from 'react-icons/fi';
+import ProjectModal from './ProjectModal';
+import FeaturedShowcase from './FeaturedShowcase';
+import ProjectCard from './ProjectCard';
 import { FILTERS } from '../../constants/components';
-
 
 const matchesFilter = (language, match) => {
   if (!match) return true;
@@ -12,11 +13,18 @@ const matchesFilter = (language, match) => {
 
 const Projects = () => {
   const [active, setActive] = useState('Tous');
+  const [selectedProject, setSelectedProject] = useState(null);
 
-  const filtered = ProjectsElements.filter((el) => {
+  const filtered = useMemo(() => {
     const filter = FILTERS.find((f) => f.label === active);
-    return matchesFilter(el.language, filter.match);
-  });
+    return ProjectsElements.filter((el) => matchesFilter(el.language, filter.match));
+  }, [active]);
+
+  const featured = active === 'Tous' ? ProjectsElements.find((p) => p.id === 16) : null;
+  const gridItems = useMemo(
+    () => (featured ? filtered.filter((p) => p.id !== 16) : filtered),
+    [filtered, featured]
+  );
 
   return (
     <section className="py-28 px-6 relative">
@@ -24,89 +32,66 @@ const Projects = () => {
       <div className="absolute bottom-20 -right-32 w-96 h-96 bg-violet-500/8 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
+
         <div className="text-center mb-14">
-          <p className="text-teal-400 text-xs font-medium tracking-widest uppercase mb-3">
-            Ce que j'ai réalisé
-          </p>
-          <h2 className="text-3xl lg:text-4xl font-bold text-white">
-            Mes{' '}
-            <span className="text-white">
-              projets
-            </span>
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-teal-400/30 bg-teal-400/5 text-teal-400 text-xs font-medium tracking-widest uppercase mb-6">
+            Ce que j'ai construit
+          </div>
+          <h2 className="text-4xl lg:text-5xl font-black text-white mb-4 tracking-tight">
+            Mes projets
           </h2>
         </div>
 
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {FILTERS.map((f) => (
-            <button
-              key={f.label}
-              onClick={() => setActive(f.label)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                active === f.label
-                  ? 'bg-gradient-to-r from-teal-500 to-violet-600 text-white shadow-lg shadow-teal-500/20'
-                  : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              {f.label}
-            </button>
-          ))}
+          {FILTERS.map((f) => {
+            const count = ProjectsElements.filter((el) =>
+              matchesFilter(el.language, f.match)
+            ).length;
+            return (
+              <button
+                key={f.label}
+                onClick={() => setActive(f.label)}
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  active === f.label
+                    ? 'bg-gradient-to-r from-teal-500 to-violet-600 text-white shadow-lg shadow-teal-500/20'
+                    : 'bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/10'
+                }`}
+              >
+                {f.label}
+                <span className={`text-[10px] font-bold px-1.5 py-0.5 rounded-full ${
+                  active === f.label ? 'bg-white/20 text-white' : 'bg-white/10 text-gray-500'
+                }`}>
+                  {count}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filtered.map((element) => (
-            <div
+        {featured && (
+          <FeaturedShowcase
+            project={featured}
+            onClick={() => setSelectedProject(featured)}
+          />
+        )}
+
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {gridItems.map((element) => (
+            <ProjectCard
               key={element.id}
-              className="group bg-white/5 border border-white/10 rounded-xl overflow-hidden hover:border-white/20 transition-all duration-300 flex flex-col"
-            >
-              <div className="relative overflow-hidden h-44">
-                <img
-                  src={element.src}
-                  alt={element.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080b14]/80 via-transparent to-transparent" />
-
-                <div className="absolute top-3 right-3 flex items-center gap-1.5 bg-black/50 backdrop-blur-sm text-white text-xs px-2.5 py-1 rounded-full border border-white/10">
-                  <FiUsers className="text-teal-400" />
-                  {element.equipe}
-                </div>
-              </div>
-
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="text-white font-semibold text-sm leading-snug mb-2">
-                  {element.title}
-                </h3>
-
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {element.language.split(', ').map((tech) => (
-                    <span
-                      key={tech}
-                      className="text-xs px-2 py-0.5 rounded-full bg-white/5 border border-white/10 text-gray-400"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-
-                {element.lien && element.lien !== '#' && (
-                  <div className="mt-auto pt-4 border-t border-white/5">
-                    <a
-                      href={element.lien}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-medium text-teal-400 hover:text-teal-300 transition-colors"
-                    >
-                      {element.lien.includes('github.com') ? <FiGithub /> : <FiExternalLink />}
-                      {element.lien.includes('github.com') ? 'Voir le code' : 'Voir le site'}
-                      {element.lien.includes('github.com') && <FiExternalLink className="text-[10px]" />}
-                    </a>
-                  </div>
-                )}
-              </div>
-            </div>
+              element={element}
+              onClick={() => setSelectedProject(element)}
+            />
           ))}
         </div>
       </div>
+
+      {selectedProject && (
+        <ProjectModal
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
+      )}
     </section>
   );
 };

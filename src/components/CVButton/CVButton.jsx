@@ -1,15 +1,16 @@
-import React from 'react';
 import { FiDownload } from 'react-icons/fi';
+import Button from '../Button/Button';
 
-const CVButton = () => {
-  return (
-    <a href="/CV_MOUSSI_SID_AHMED.pdf" download="CV_MOUSSI_SID_AHMED.pdf">
-      <button className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-500 to-violet-600 text-white text-sm font-semibold rounded-lg hover:opacity-90 transition-opacity duration-200 shadow-lg shadow-teal-500/20">
-        <FiDownload className="text-base" />
-        Télécharger mon CV
-      </button>
-    </a>
-  );
-};
+const CVButton = () => (
+  <Button
+    variant="primary"
+    size="md"
+    href="/CV_MOUSSI_SID_AHMED.pdf"
+    download="CV_MOUSSI_SID_AHMED.pdf"
+    icon={<FiDownload />}
+  >
+    Télécharger mon CV
+  </Button>
+);
 
 export default CVButton;
