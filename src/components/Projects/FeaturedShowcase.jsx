@@ -13,10 +13,7 @@ const FeaturedShowcase = ({ project, onClick }) => (
           <div className="flex flex-wrap items-center gap-2 mb-6">
             <span className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-teal-400 animate-pulse" />
-              Live en production
-            </span>
-            <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400">
-              Professionnel
+              En production
             </span>
           </div>
 
