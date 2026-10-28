@@ -51,12 +51,6 @@ const NavBar = () => {
         </ul>
 
         <div className="flex items-center gap-3">
-          <a
-            href="mailto:moussisidahmed0@gmail.com"
-            className="hidden md:inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-teal-500/[0.08] border border-teal-500/25 text-teal-400 text-xs font-semibold hover:bg-teal-500/[0.14] hover:border-teal-500/40 transition-all duration-200"
-          >
-            Contact
-          </a>
           <button
             onClick={() => setOpen(!open)}
             className="md:hidden w-9 h-9 rounded-lg bg-white/[0.05] border border-white/10 flex items-center justify-center text-gray-300 hover:text-white transition-colors"
@@ -86,12 +80,6 @@ const NavBar = () => {
               {link.label}
             </Link>
           ))}
-          <a
-            href="mailto:moussisidahmed0@gmail.com"
-            className="mt-2 py-3 px-4 rounded-xl text-sm font-medium text-center bg-teal-500/[0.08] border border-teal-500/20 text-teal-400"
-          >
-            Contact
-          </a>
         </div>
       </div>
     </nav>
