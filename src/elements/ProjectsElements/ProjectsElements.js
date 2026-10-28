@@ -217,7 +217,7 @@ const ProjectsElements = [
     type: "Personnel",
     description:
       "Application de gestion des dépenses en groupe (colocation, voyages, sorties) avec authentification sécurisée via Spring Security. L'intégration de Mistral AI permet d'analyser les habitudes de dépenses et de proposer des suggestions automatisées pour rééquilibrer les remboursements entre participants. Un tableau de bord interactif offre une vue claire des soldes.",
-    lien: "#",
+    lien: "https://github.com/Sid-Ahmed7/AI-powered-shared-expense-manager",
   },
   {
     id: 18,
