@@ -114,7 +114,7 @@ const ContactForm = () => {
               size="md"
               type="submit"
               disabled={isLoading}
-              icon={<FiSend size={14} />}
+              icon={!isLoading && <FiSend size={14} />}
               className="w-full justify-center"
             >
               {submitLabel()}
